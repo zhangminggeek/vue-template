@@ -1,6 +1,13 @@
 import * as commonApi from '@/api/common'
 import md5 from 'js-md5'
 
+/**
+ * 表单校验
+ * @param target 当前Vue实例
+ * @param form {String} 表单ref
+ * @return Promise对象：可执行;false：不可执行
+ * @author 张铭 2018/08/01
+ */
 export function checkForm (target, form) {
   return new Promise((resolve, reject) => {
     target.$refs[form].validate((valid) => {
@@ -13,6 +20,15 @@ export function checkForm (target, form) {
   })
 }
 
+/**
+ * 值与文字之间的转换
+ * @param val 需转换的值
+ * @param arr {Array} 转换查询的数组对象
+ * @param label {String} 数组对象中文字的key，默认值label
+ * @param value {String} 数组对象中值的key，默认值value
+ * @return {String} 传入值所对应的文字
+ * @author 张铭 2018/08/01
+ */
 export function transformValueToLabel (val, arr, label = 'label', value = 'value') {
   const res = arr.filter(item => {
     return item[value] === val
@@ -22,6 +38,13 @@ export function transformValueToLabel (val, arr, label = 'label', value = 'value
   }
 }
 
+/**
+ * 格式化日期
+ * @param date 日期，可接受时间戳或毫秒数
+ * @param type {Number} 转换类型
+ * @return {String} 时间戳
+ * @author 张铭 2018/08/01
+ */
 export function formatDate (date, type = 1) {
   if (typeof date === 'string' || typeof date === 'number') {
     date = new Date(date)
@@ -41,10 +64,24 @@ export function formatDate (date, type = 1) {
   }
 }
 
+/**
+ * 小于10的数值补0
+ * @param num {Numbeer}
+ * @return {String}
+ * @author 张铭 2018/08/01
+ */
 export function toDouble (num) {
   return num < 10 ? '0' + num : num
 }
 
+/**
+ * 增加时间
+ * @param target {Date} 原时间
+ * @param unit {String} 增加类型
+ * @param value {Numbeer} 需要增加的时间
+ * @return {Date} 计算后时间
+ * @author 张铭 2018/08/01
+ */
 export function addDate (target, unit, value) {
   switch (unit) {
     case 'y':
@@ -69,7 +106,12 @@ export function addDate (target, unit, value) {
   return target
 }
 
-// 获取文件后缀
+/**
+ * 获取文件后缀
+ * @param filename {String} 文件名
+ * @return {String} 文件名后缀
+ * @author 张铭 2018/08/01
+ */
 export function getSuffix (filename) {
   const pos = filename.lastIndexOf('.')
   let suffix = ''
@@ -79,9 +121,13 @@ export function getSuffix (filename) {
   return suffix
 }
 
-// 生成随机数（默认32位）
-export function randomString (len) {
-  len = len || 32
+/**
+ * 生成随机数
+ * @param len {Number} 随机数位数，默认32位
+ * @return {String} 随机数
+ * @author 张铭 2018/08/01
+ */
+export function randomString (len = 32) {
   const chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
   const maxPos = chars.length
   let pwd = ''
@@ -91,7 +137,14 @@ export function randomString (len) {
   return pwd
 }
 
-// 设置cookie
+/**
+ * 设置cookie
+ * @param cname {String} cookie名
+ * @param cvalue {String} cookie值
+ * @param exdays {String} cookie保存时间（天）
+ * @param path {String} cookie保存路径
+ * @author 张铭 2018/08/01
+ */
 export function setCookie (cname, cvalue, exdays, path = '/') {
   let d = new Date()
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
@@ -100,7 +153,12 @@ export function setCookie (cname, cvalue, exdays, path = '/') {
   document.cookie = cname + '=' + cvalue + '; ' + expires + ';' + cpath
 }
 
-// 获取cookie
+/**
+ * 获取cookie
+ * @param cname {String} cookie名
+ * @return {String} cookie值
+ * @author 张铭 2018/08/01
+ */
 export function getCookie (cname) {
   var name = cname + '='
   var ca = document.cookie.split(';')
@@ -112,12 +170,20 @@ export function getCookie (cname) {
   return ''
 }
 
-// 清除cookie
-export function clearCookie (name) {
-  setCookie(name, '', -1)
+/**
+ * 清除cookie
+ * @param cname {String} cookie名
+ * @author 张铭 2018/08/01
+ */
+export function clearCookie (cname) {
+  setCookie(cname, '', -1)
 }
 
-// 获取signature
+/**
+ * 获取signature
+ * @param name {String} 获取signature的api方法名
+ * @author 张铭 2018/08/01
+ */
 export function getSignature (name) {
   return new Promise((resolve, reject) => {
     const res = getCookie('sign') ? JSON.parse(getCookie('sign')) : ''
@@ -132,8 +198,12 @@ export function getSignature (name) {
     }
   })
 }
-
-// url拼接参数转换为对象格式
+/**
+ * url拼接参数转换为对象格式
+ * @param data {String} url
+ * @returns {Object} 转换后对象
+ * @author 张铭 2018/08/01
+ */
 export function transformUrlToObject (data) {
   const arr = data.split('&')
   let obj = {}
@@ -144,7 +214,11 @@ export function transformUrlToObject (data) {
   return obj
 }
 
-// 生成盐值
+/**
+ * 生成盐值
+ * @returns {String} 盐值
+ * @author 张铭 2018/08/01
+ */
 export function createSalt () {
   let result = Math.floor(Math.random() * 90 + 10).toString()
   for (let i = 0; i < 2; i++) {
@@ -154,7 +228,12 @@ export function createSalt () {
   return result
 }
 
-// 密码加密解密
+/**
+ * 加密
+ * @param param {String} 需加密密码
+ * @returns {String} 加密后密码
+ * @author 张铭 2018/08/01
+ */
 export function encryptPwd (param) {
   let password = ''
   for (let i in param) {
@@ -163,6 +242,13 @@ export function encryptPwd (param) {
   password = password.slice(0, password.length - 1)
   return password
 }
+
+/**
+ * 解密
+ * @param param {String} 需解密密码
+ * @returns {String} 解密后密码
+ * @author 张铭 2018/08/01
+ */
 export function decodwPwd (param) {
   let password = ''
   if (param && param.indexOf('*') !== -1) {
@@ -176,7 +262,13 @@ export function decodwPwd (param) {
   return password
 }
 
-// 生成加盐加密后密码
+/**
+ * 生成加盐加密后密码
+ * @param password {String} 需解密密码
+ * @param salt {String} 盐值
+ * @returns {String} 加盐加密后密码
+ * @author 张铭 2018/08/01
+ */
 export function createNewPassword (password, salt) {
   return md5(encryptPwd(salt + password))
 }
