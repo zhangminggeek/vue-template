@@ -10,7 +10,7 @@ import './style/static.css'
 import './style/style.css'
 import * as _utils from '@/utils/index'
 import * as _global from '@/utils/global'
-import * as filters from '@/utils/filters'
+import * as filters from '@/filters/index'
 import 'babel-polyfill'
 
 Vue.config.productionTip = false
