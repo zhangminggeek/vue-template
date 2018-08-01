@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Message, Loading } from 'element-ui'
 import router from '@/router'
+import store from '@/store'
 
 // create loading
 let loading
@@ -18,23 +19,21 @@ function endLoading () {
   loading.close()
 }
 
-let needLoadingRequestCount = 0 // 需要loading层的请求数量
-
-function showFullScreenLoading (isLoading = true) {
-  if (needLoadingRequestCount === 0 && isLoading) {
+function showFullScreenLoading (isLoading = true) { // isLoading 请求是否需要添加loading动画
+  if (store.state.needLoadingRequestCount === 0 && isLoading) {
     startLoading()
   }
   if (isLoading) {
-    needLoadingRequestCount++
+    store.state.needLoadingRequestCount++
   }
 }
 
-function tryHideFullScreenLoading() {
-  if (needLoadingRequestCount <= 0) {
+function tryHideFullScreenLoading () {
+  if (store.state.needLoadingRequestCount <= 0) {
     return false
   }
-  needLoadingRequestCount--
-  if (needLoadingRequestCount === 0) {
+  store.state.needLoadingRequestCount--
+  if (store.state.needLoadingRequestCount === 0) {
     endLoading()
   }
 }
