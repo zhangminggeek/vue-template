@@ -16,11 +16,24 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .error-page{
     width: 100%;
     height: 100%;
     background: #F7F7F7;
+    img{
+      float: left;
+      width: 380px;
+      height: 338px;
+    }
+    h1{
+      font-size: 110px;
+      color: #555555;
+    }
+    p{
+      font-size: 16px;
+      color: #555555;
+    }
   }
   .error-page__content{
     position: absolute;
@@ -34,18 +47,5 @@ export default {
   .error-page__text{
     float: left;
     margin: 70px 0 0 20px;
-  }
-  .error-page img{
-    float: left;
-    width: 380px;
-    height: 338px;
-  }
-  .error-page h1{
-    font-size: 110px;
-    color: #555555;
-  }
-  .error-page p{
-    font-size: 16px;
-    color: #555555;
   }
 </style>
