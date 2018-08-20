@@ -8,10 +8,10 @@ let loading
 
 function startLoading () {
   loading = Loading.service({
-    target: document.getElementById('app'),
     lock: true,
     text: '加载中……',
-    background: 'rgba(255, 255, 255, 0.7)'
+    background: 'rgba(255, 255, 255, 0.7)',
+    fullscreen: true
   })
 }
 
