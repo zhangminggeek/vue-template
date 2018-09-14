@@ -22,7 +22,10 @@
 .el-button.is-disabled,
 .el-button.is-disabled:focus,
 .el-button.is-disabled:hover,
-.el-input.is-disabled .el-input__inner{cursor: default;} /* 禁用手型 */
+.el-input.is-disabled .el-input__inner,
+.el-pagination button:disabled,
+.el-radio__input.is-disabled .el-radio__inner,
+.el-radio__input.is-disabled+span.el-radio__label{cursor: default;} /* 禁用手型 */
 .el-table__header th{ /* 表格头颜色 */
   height: 50px;
   background: #FAFAFA;
