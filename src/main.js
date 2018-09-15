@@ -11,9 +11,12 @@ import './style/style.scss'
 import * as _utils from '@/utils/index'
 import * as _global from '@/utils/global'
 import * as filters from '@/filters/index'
+import promise from 'es6-promise'
 import 'babel-polyfill'
 
 Vue.config.productionTip = false
+
+promise.polyfill()
 
 Vue.use(ElementUI)
 
