@@ -39,7 +39,7 @@ export function validateRule (val, type) {
       regExp = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
       break
     case 11: // 号码类（银行卡号）
-      regExp = /^\d$/
+      regExp = /^\d*$/
       break
     case 12: // 号码类（订单号/流水号）
       regExp = /^[a-zA-Z\d_-]*$/
