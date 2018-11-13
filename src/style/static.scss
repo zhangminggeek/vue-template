@@ -62,9 +62,9 @@ select:-webkit-autofill{-webkit-box-shadow: 0 0 0 1000px white inset;}  /*登录
   padding: 8px 0;
 }
 .u-btn--default{
-  color: #0F9EE9;
+  color: $baseColor;
   background: inherit;
-  border: 1px solid #0F9EE9;
+  border: 1px solid $baseColor;
 }
 .u-btn--delete{
   color: #FF6660;

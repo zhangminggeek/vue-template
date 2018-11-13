@@ -1,24 +1,25 @@
+@import "base";
 /* element-ui */
 .el-button--primary{
-  background-color: #0F9EE9;
-  border-color: #0F9EE9;
+  background-color: $baseColor;
+  border-color: $baseColor;
 }
 .el-button--primary:focus,
 .el-button--primary:hover{
-  background-color: #2AB6FF;
-  border-color: #2AB6FF;
+  background-color: $baseHoverColor;
+  border-color: $baseHoverColor;
 }
-.el-button--text{color: #0F9EE9;}
+.el-button--text{color: $baseColor;}
 .el-button--text:focus,
 .el-button--text:hover{
-  color: #2AB6FF;
+  color: $baseHoverColor;
 }
 .el-checkbox__input.is-checked .el-checkbox__inner,
 .el-checkbox__input.is-indeterminate .el-checkbox__inner{ /* 多选框选中颜色 */
-  background-color: #0F9EE9;
-  border-color: #0F9EE9;
+  background-color: $baseColor;
+  border-color: $baseColor;
 }
-.el-checkbox__input.is-checked+.el-checkbox__label{color: #0F9EE9;} /* 多选框选中文字颜色 */
+.el-checkbox__input.is-checked+.el-checkbox__label{color: $baseColor;} /* 多选框选中文字颜色 */
 .el-button.is-disabled,
 .el-button.is-disabled:focus,
 .el-button.is-disabled:hover,
