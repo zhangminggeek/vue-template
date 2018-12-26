@@ -63,6 +63,8 @@ export const validatePhone = (rule, value, callback) => {
     callback(new Error('请输入手机号'))
   } else if (!validateRule(value, 6)) {
     callback(new Error('请输入正确的手机号'))
+  } else {
+    callback()
   }
 }
 
@@ -74,5 +76,7 @@ export const validatePwd = (rule, value, callback) => {
     callback(new Error('密码长度为6-18位'))
   } else if (!validateRule(value, 5)) {
     callback(new Error('请输入6-18位数字、字母、符号任意两种及以上组合的密码'))
+  } else {
+    callback()
   }
 }
