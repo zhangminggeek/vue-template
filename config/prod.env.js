@@ -1,4 +1,4 @@
 'use strict'
 module.exports = {
-  NODE_ENV: '"production"'
+  assetsPublicPath: '"/aa"' // 外网静态资源oss地址
 }
