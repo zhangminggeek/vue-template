@@ -8,7 +8,7 @@ switch (process.env.CONFIG) {
     assetsPublicPath = '"/"'
     break
   case 'release':
-    assetsPublicPath = '"/"'
+    assetsPublicPath = '"/release"'
     break
   default:
     assetsPublicPath = '"/"'
